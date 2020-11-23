@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>ホーム</h1>
+    <h1>カレンダー</h1>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({})
