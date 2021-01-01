@@ -1,5 +1,6 @@
 import '@/plugins/composition-api'
 import { reactive } from '@vue/composition-api'
+import axios from 'axios'
 import { Profile } from '@/store/profile.model'
 import { update } from '@/store/shared-user'
 
@@ -36,4 +37,19 @@ export const updateThemeColor = (themeColor: string) => {
   profileStore.profile!.themeColor = themeColor
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   update(profileStore.profile!)
+}
+
+/**
+ * サインインします。
+ */
+export const signInAsync = async () => {
+  // ここに外部認証に関連した実装が必要
+
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response = await axios.get<Profile>('profile')
+    profileStore.profile = response.data
+  } catch (error) {
+    throw error
+  }
 }
