@@ -57,7 +57,7 @@ import {
   toRefs,
   computed,
 } from '@vue/composition-api'
-import { profileMockData, profileStore } from '@/store/profile'
+import { profileStore } from '@/store/profile'
 
 interface MenuItem {
   title: string
