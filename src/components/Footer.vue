@@ -57,13 +57,7 @@ import {
   toRefs,
   computed,
 } from '@vue/composition-api'
-import { profileStore } from '@/store/profile'
-
-interface MenuItem {
-  title: string
-  icon: string
-  methodName: string
-}
+import { profileStore } from '@/store/profile/profile'
 
 export default defineComponent({
   setup(prop, context) {
@@ -76,10 +70,10 @@ export default defineComponent({
           methodName: 'profile',
         },
         { title: '共有する', icon: 'share', methodName: 'share' },
-      ] as MenuItem[],
+      ],
       // サインインしているユーザー
       signInUser: computed(() => {
-        return profileStore.profile
+        return profileStore.getProfile
       }),
     })
     /**
@@ -94,7 +88,13 @@ export default defineComponent({
      * @param {string} path 遷移先のパス
      */
     const routerPush = (path: string) => {
-      context.root.$router.push(path)
+      context.root.$router.push(
+        path,
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {},
+      )
     }
     /**
      * プロフィール画面に遷移します。
@@ -112,7 +112,7 @@ export default defineComponent({
      * サインアウトします。
      */
     const signOut = () => {
-      profileStore.profile = null
+      profileStore.clearProfile()
       routerPush('/sign-in')
     }
 

@@ -12,7 +12,7 @@ import axios from 'axios'
 
 @Module({ dynamic: true, store, name: 'profile', namespaced: true })
 class ProfileModule extends VuexModule {
-  private profile: Profile | null = null
+  public profile: Profile | null = null
 
   /**
    * プロフィールを取得します。
@@ -63,7 +63,7 @@ class ProfileModule extends VuexModule {
    * State からプロフィールをクリアします。
    */
   @Mutation
-  private clearProfile() {
+  public clearProfile() {
     this.profile = null
   }
 
