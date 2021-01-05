@@ -10,6 +10,7 @@ import '@/plugins/vee-validate'
 import '@/plugins/axios'
 import '@/plugins/vuetify-toast-snackbar'
 import '@/plugins/vuetify-dialog'
+import '@/plugins/error-handler'
 
 Vue.config.productionTip = false
 
